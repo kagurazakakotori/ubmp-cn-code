@@ -1,0 +1,17 @@
+.vscode/
+
+# temporary filesystem
+esp/
+
+# object files
+*.o
+*.so
+
+# executable binary except driver
+*.efi
+!drivers/*.efi
+
+# linux-related binary
+bzImage
+busybox
+*.img

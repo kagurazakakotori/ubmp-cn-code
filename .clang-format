@@ -1,0 +1,10 @@
+---
+AlignConsecutiveMacros: true
+BreakBeforeBraces: Linux
+PointerAlignment: Right
+SortIncludes: false
+ColumnLimit: 0
+IndentWidth: 4
+IndentCaseLabels: true
+UseTab: Never
+---
