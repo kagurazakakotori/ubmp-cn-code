@@ -23,13 +23,11 @@
 * MinGW-w64 GCC交叉编译器
 * QEMU
 * OVMF
-* gnu-efi (版本 >= 3.0.13)
+* gnu-efi (版本 >= 3.0.14)
 * dos2unix
 * imagemagick
 
-<del>最新版的 gnu-efi 可以在 [https://sourceforge.net/projects/gnu-efi/](https://sourceforge.net/projects/gnu-efi/) 下载</del>
-
-由于用到的一些协议的头文件暂时未被合入 gnu-efi 的 master 分支中，请暂时先使用[我个人的修改版本](https://github.com/kagurazakakotori/gnu-efi), 否则使用 Simple Text Input Ex 协议和 Device Path Utilities 协议的代码将无法编译，并且 `Pause()` 函数会产生非预期的结果。
+最新版的 gnu-efi 可以在 [https://gitlab.com/ncroxon/gnu-efi](https://gitlab.com/ncroxon/gnu-efi) 下载
 
 在 Ubuntu 20.04 上安装上述工具的代码如下:
 
