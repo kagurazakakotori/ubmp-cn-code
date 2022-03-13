@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ "${BASH_SOURCE[0]}" -ef "$0" ]
+then
+    echo "Please source this script"
+    exit 1
+fi
+
+SCRIPT_PATH=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
+GNUEFI_PATH=${SCRIPT_PATH}/submodules/gnu-efi
+SYSROOT_PATH=${SCRIPT_PATH}/sysroot
+
+git submodule update --init
+make -C ${GNUEFI_PATH} -j$(nproc)
+make -C ${GNUEFI_PATH} INSTALLROOT=${SYSROOT_PATH} PREFIX=/usr install
+
+export GNUEFI_SYSROOT=${SYSROOT_PATH}
+echo "Env GNUEFI_SYSROOT has been set to ${SYSROOT_PATH}"

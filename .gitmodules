@@ -1,0 +1,3 @@
+[submodule "submodules/gnu-efi"]
+	path = submodules/gnu-efi
+	url = https://gitlab.com/ncroxon/gnu-efi.git

@@ -27,13 +27,18 @@
 * dos2unix
 * imagemagick
 
-最新版的 gnu-efi 可以在 [https://gitlab.com/ncroxon/gnu-efi](https://gitlab.com/ncroxon/gnu-efi) 下载
-
 在 Ubuntu 20.04 上安装上述工具的代码如下:
 
 ```shell
 sudo apt install build-essential gcc-mingw-w64-x86-64 qemu-system-x86 ovmf gnu-efi dos2unix imagemagick
 ```
+
+### 关于gnu-efi
+
+绝大部分发行版提供的 gnu-efi 版本并不满足运行所有示例代码的要求。使用 Simple Text Input Ex 协议和 Device Path Utilities 协议的代码将无法编译，并且 `Pause()` 函数会产生非预期的结果。请务必确保使用的 gnu-efi 是 3.0.14 及更高版本，最新版的 gnu-efi 可以在 [https://gitlab.com/ncroxon/gnu-efi](https://gitlab.com/ncroxon/gnu-efi) 下载.
+
+本示例代码也提供了一个更简便的方法来使用最新版的 gnu-efi. 运行 `source init-gnuefi` 命令将自动拉取新版本的 gnu-efi, 编译并安装至 `sysroot` 下(不会与既有安装冲突), 同时设置环境变量。运行该命令后, 在该 shell 进程及其子进程下, 将会使用 `sysroot` 中的 gnu-efi 编译示例代码。
+
 
 ## Makefile 规则
 

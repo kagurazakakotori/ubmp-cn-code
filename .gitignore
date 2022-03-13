@@ -15,3 +15,6 @@ esp/
 bzImage
 busybox
 *.img
+
+# install path of custom gnu-efi build
+sysroot/**

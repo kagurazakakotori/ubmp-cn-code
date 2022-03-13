@@ -1,10 +1,10 @@
 OBJS         = $(patsubst %.c, %.o, $(wildcard *.c))
 
 ARCH         = $(shell uname -m | sed s,i[3456789]86,ia32,)
-EFIINC       = /usr/include/efi
+EFIINC       = ${GNUEFI_SYSROOT}/usr/include/efi
+EFILIB       = ${GNUEFI_SYSROOT}/usr/lib
+
 EFIINCS      = -I$(EFIINC) -I$(EFIINC)/$(ARCH) -I$(EFIINC)/protocol
-LIB          = /usr/lib
-EFILIB       = /usr/lib
 EFI_CRT_OBJS = $(EFILIB)/crt0-efi-$(ARCH).o
 EFI_LDS      = $(EFILIB)/elf_$(ARCH)_efi.lds
 
@@ -14,7 +14,7 @@ ifeq ($(ARCH),x86_64)
     CFLAGS += -DEFI_FUNCTION_WRAPPER
 endif
 
-LDFLAGS      = -nostdlib -znocombreloc -T $(EFI_LDS) -shared -Bsymbolic -L $(EFILIB) -L $(LIB) $(EFI_CRT_OBJS)
+LDFLAGS      = -nostdlib -znocombreloc -T $(EFI_LDS) -shared -Bsymbolic -L $(EFILIB) $(EFI_CRT_OBJS)
 
 target: $(TARGET)
 
