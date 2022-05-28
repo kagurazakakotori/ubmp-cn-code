@@ -53,7 +53,10 @@ unsigned int gets(unsigned short *buf, unsigned int buf_size)
     for (i = 0; i < buf_size - 1;) {
         buf[i] = getc();
         putc(buf[i]);
-        if (buf[i] == L'\r') {
+        if (buf[i] == L'\b') {
+            i--;
+            continue;
+        } else if (buf[i] == L'\r') {
             putc(L'\n');
             break;
         }
